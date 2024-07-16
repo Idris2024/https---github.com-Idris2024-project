@@ -1,32 +1,9 @@
-// const express = require('express');
+
+const express = require('express');
 // const app = express();
 // const port = 3000;
 
-// app.use(express.json());
-
-// app.post('/sign-up', (req, res) => 
-//     {
-//         const { Firstname, Lastname, Email, Phonenumber, Password } = req.body;
-        
-//         if(!Firstname || !Lastname || !Email || !Phonenumber || !Password){
-//             return
-//             res.status(400).send('All fields are required');
-//         }
-//         }
-
-    
-// )
-
-
-const express = require('express');
-const app = express();
-const port = 3000;
-
-// Middleware to parse JSON bodies
 app.use(express.json());
-
-// In-memory database to store user data
-const users = [];
 
 // POST /sign up
 app.post('/sign-up', (req, res) => {
@@ -36,7 +13,7 @@ app.post('/sign-up', (req, res) => {
         return res.status(400).send('All fields are required');
     }
 
-    // Check if user already exists
+    // Check 
     const existingUser = users.find(user => user.Email === Email);
     if (existingUser) {
         return res.status(400).send('User already exists');
@@ -46,7 +23,6 @@ app.post('/sign-up', (req, res) => {
     users.push({ Firstname, Lastname, Email, Phonenumber, Password });
     res.status(201).send('User registered successfully');
 });
-
 // POST /sign in
 app.post('/sign-in', (req, res) => {
     const { Email, Password } = req.body;
@@ -65,13 +41,20 @@ app.post('/sign-in', (req, res) => {
     res.status(200).send('Sign-in successful');
 });
 
+// In-memory database to store user data
+const users = [];
+
 // GET /user
 app.get('/user', (req, res) => {
     res.status(200).json(users);
 });
 
-// Start the server
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
+// const liasuRdCom = {};
 
+// app.post
+
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.use(express.json());
