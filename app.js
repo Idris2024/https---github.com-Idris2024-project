@@ -1,7 +1,6 @@
-
 const express = require('express');
-// const app = express();
-// const port = 3000;
+const app = express();
+const port = 3000;
 
 app.use(express.json());
 
@@ -49,12 +48,6 @@ app.get('/user', (req, res) => {
     res.status(200).json(users);
 });
 
-// const liasuRdCom = {};
-
-// app.post
-
-const express = require('express');
-const app = express();
-const port = 3000;
-
-app.use(express.json());
+app.listen(port, () => {
+    console.log('server running  at http://localhost:${port}');
+    });
