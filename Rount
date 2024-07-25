@@ -1,0 +1,74 @@
+const express = require('express');
+const app = express();
+const PORT = 3000;
+
+app.get('/about', (req, res) => {
+  res.send('About Page');
+});
+
+// Route Parameters
+app.get('/users/:id', (req, res) => {
+    res.send(`User ID: ${req.params.id}`);
+  });
+
+
+  const router = express.Router();
+
+router.get('/users', (req, res) => {
+  res.send('User List jamal');
+});
+
+router.get('/users/:id', (req, res) => {
+  res.send(`User ID: ${req.params.id}`);
+});
+
+app.use('/api', router);
+
+// Logging Middleware
+const logger = (req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+  };
+  
+  app.use(logger);
+  
+
+  app.get('/', (req, res) => {
+    res.send('Hello, World!');
+  });
+  
+  // Extracting Data from Requests
+  app.get('/search', (req, res) => {
+    const query = req.query.q;
+    res.send(`Search query: ${query}`);
+  });
+  
+  app.post('/login', (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+    res.send(`Username: ${username}, Password: ${password}`);
+  });
+ //Sending Responses
+app.get('/', (req, res) => {
+  res.send('Hello, World!');
+});
+
+app.get('/json', (req, res) => {
+  res.json({ message: 'Hello, World!' });
+});
+
+app.get('/status', (req, res) => {
+  res.status(404).send('Page not found');
+});
+ //Custom Headers and Status Codes
+app.get('/custom-header', (req, res) => {
+  res.set('X-Custom-Header', 'CustomValue');
+  res.send('Check the custom header');
+});
+
+app.get('/not-found', (req, res) => {
+  res.status(404).send('Resource not found');
+});
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});

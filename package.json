@@ -10,6 +10,9 @@
   "keywords": [],
   "description": "",
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
+    "validation": "^0.0.1"
   }
 }
